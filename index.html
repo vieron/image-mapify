@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>image mapify</title>
+	<link rel="stylesheet" href="stylesheets/image-mapify.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="http://jqueryui.com/themes/base/jquery.ui.all.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<h1>image mapify</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<div id="image-mapify">
+  <div id="viewport">
+    
+  </div><!-- #viewport -->
+
+  <div id="settings">
+
+    <ul>
+      <li>
+        <label for="background_image_url">Background image URL</label>
+        <input type="text" name="background_image_url" value="http://placehold.it/520x900" id="background_image_url" />
+      </li>
+      <li>
+        <a href="#" id="add_shape">+ Add shape</a>
+      </li>
+      <li>
+          <a href="#" id="generate_code">Generate HTML code</a><a href="#" id="preview">Preview</a>
+      </li>
+      
+    </ul>
+
+  </div><!-- #settings -->
+</div><!-- #image-mapify -->
+
+</div><!-- .wrapper -->
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script src="javascripts/jquery.image-mapify.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    
+    $('#image-mapify').imageMapify({
+      caca : true
+    });
+    
+  })
+</script>
+
+</body>
+</html>
