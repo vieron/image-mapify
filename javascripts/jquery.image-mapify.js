@@ -20,7 +20,8 @@
         
         
     var _ = {
-              $activeShape : undefined
+              $activeShape : undefined,
+              targetlink_opts : ['none', '_blank', '_parent']
             };
           
     var tpl = {
@@ -28,12 +29,20 @@
       <div class="shape_options">\
         <h2>Selected Shape Options</h2>\
         <p>\
-          <label for="shape_text">Text</label>\
-          <input type="text" name="shape_text" value="{{shape_text}}" id="shape_text" />\
-        </p>\
-        <p>\
           <label for="shape_link">Link</label>\
           <input type="text" name="shape_link" value="{{shape_link}}" id="shape_link" />\
+        </p>\
+        <p>\
+          <label for="shape_text_targetlink">Link target</label>\
+          <select name="shape_text_targetlink" id="shape_text_targetlink">\
+            <option value="none">None</option>\
+            <option value="_blank">New tab</option>\
+            <option value="_parent">Same window</option>\
+          </select>\
+        </p>\
+        <p>\
+          <label for="shape_text">Text</label>\
+          <input type="text" name="shape_text" value="{{shape_text}}" id="shape_text" />\
         </p>\
         <p>\
           <label for="shape_text_shown">Show text?</label>\
@@ -94,10 +103,7 @@
           .draggable(ui_opts);
          
         $DOM.shapes = $DOM.shapes ? $DOM.shapes.add($shape) : $shape;
-        $shape.trigger('dblclick');
-        
-        console.log($DOM.shapes);
-        
+        $shape.trigger('dblclick');        
       },
       
       showShapeSettings : function($shape){
@@ -109,8 +115,14 @@
         
         var $shape_options = $(shape_options).appendTo($DOM.settings);
         
+        //selects
+        $shape_options.find('select').each(function(){
+          var $select = $(this);
+          $select.find('option').filter(function(){ return this.value == $shape.data( $select[0].id ) }).attr('selected', 'selected');
+        });
+        
         $shape_options
-          .find(':checkbox')
+          .find(':checkbox, select')
             .bind('change', events.saveShapeOptions($shape))
           .end()
           .find(':text')
@@ -133,7 +145,8 @@
 
             $shape.attr({
               href : $shape.data('shape_link'),
-              title : $shape.data('shape_text')
+              title : $shape.data('shape_text'),
+              target : $shape.data('shape_text_targetlink') != 'none' ? $shape.data('shape_text_targetlink') : false 
             })
             .css(opts.output_shape.attrs.css)
             .html( $shape.data('shape_text') || '' ).removeAttr('class');
@@ -170,6 +183,8 @@
                   $shape.data( $input.attr('id') , $input.val() );
                 }else if(type == 'checkbox'){
                   $shape.data( $input.attr('id') , ($input.is(':checked') ? 'checked="checked"' : '') );                    
+                }else if($input[0].nodeName == 'SELECT'){
+                  $shape.data( $input.attr('id') , $input.val() );
                 };
 
           }
@@ -188,7 +203,9 @@
        }
     }
     
-    
+
+
+    //init
     $DOM.canvas.appendTo($DOM.viewport);
     $DOM.bgImage.appendTo($DOM.canvas);
     $DOM.dialog.appendTo($DOM.body);
@@ -261,7 +278,7 @@
     output_shape : {
       attrs : {
         css : {
-          background : 'url(http://www.gosh.nhs.uk/gosh_families/information_sheets/mri_scan/transparent.gif)',
+          background : 'url(http://vieron.github.com/image-mapify/images/transparent.gif)',
           border : 'none'
         }
       }
