@@ -223,7 +223,6 @@
     $DOM.s_generateCode.bind('click', function(e){
       e.preventDefault();
       var $code = DOMHandler.getCode();
-      console.log($code.encHTML())
       $DOM.dialog.html( '<code><pre style="width:580px; height:600px; white-space:normal;">'+$code.encHTML()+'</pre></code>' );
       $DOM.dialog.dialog('open').dialog( "option", "width", 600 );
     });
