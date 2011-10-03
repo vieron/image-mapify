@@ -6,7 +6,7 @@
 body {
   font-size:15px;
   font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
-  color:#333;
+  color:#999;
 }
 
 input,
@@ -31,7 +31,34 @@ a {
   color:#0099FF;
 } 
 
+h1,
+h2 {
+  font-family:quatro-slab,serif;
+  font-weight:900;
+  font-style:normal;
+}
 
+
+h1 {
+  padding-bottom:10px;
+  color:#FFF;
+  text-shadow:-1px -1px 10px #CCC;
+}
+
+h1:hover {
+  color:#333;
+  text-shadow:none;
+}
+
+h2 {
+  color:#333;
+}
+
+em {
+  font-size:11px;
+  color:#999;
+  vertical-align:middle;
+}
 
 
 #settings a {
@@ -41,6 +68,7 @@ a {
   display:inline-block;
   display:-moz-inline-stack;
   *display:inline;
+  vertical-align:middle;
   background:#0099FF;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
@@ -65,7 +93,6 @@ a {
   width:80%;
   min-width:960px;
   max-width:1400px;
-  overflow:hidden;
   margin:20px auto;
 }
 
